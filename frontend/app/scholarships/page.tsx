@@ -76,7 +76,7 @@ export default function ScholarshipsPage() {
         className="section"
         style={{ background: "var(--surface-2)", borderBlock: "1px solid var(--line)" }}
       >
-        <div className="wrap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--sp-7)" }}>
+        <div className="wrap split-even">
           <div>
             <SectionHead eyebrow="Timeline" title="Key dates 2026" small />
             <ol className="card" style={{ padding: "var(--sp-3)", listStyle: "none", margin: 0 }}>

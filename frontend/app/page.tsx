@@ -114,10 +114,7 @@ export default function Home() {
       <StatBand items={STATS} />
 
       <section className="section">
-        <div
-          className="wrap"
-          style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: "var(--sp-7)", alignItems: "start" }}
-        >
+        <div className="wrap split-main">
           <div>
             <SectionHead
               eyebrow="Newsroom"
