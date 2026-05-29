@@ -4,7 +4,7 @@ export type IconName =
   | "search" | "arrow" | "download" | "doc" | "calendar"
   | "briefcase" | "cap" | "chart" | "mega" | "sun" | "moon"
   | "menu" | "close" | "ext" | "mail" | "phone" | "pin"
-  | "check" | "grid";
+  | "check" | "grid" | "chevron";
 
 type Props = {
   name: IconName;

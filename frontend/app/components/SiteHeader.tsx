@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Brand } from "./Brand";
 import { Icon } from "./Icon";
 import { MobileDrawer } from "./MobileDrawer";
-
-const NAV = [
-  { href: "/", label: "Home" },
-  { href: "/students", label: "Students & Parents" },
-  { href: "/teachers", label: "Teachers" },
-  { href: "/scholarships", label: "Scholarships" },
-  { href: "/documents", label: "Documents" },
-  { href: "/about", label: "About" },
-] as const;
+import { NAV } from "./navConfig";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -40,18 +32,41 @@ export function SiteHeader() {
           <Brand />
           <nav className="nav" aria-label="Primary">
             {NAV.map((item) => {
-              const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              const active = pathname.startsWith(item.href);
               return (
-                <Link key={item.href} href={item.href} className={active ? "active" : ""}>
-                  {item.label}
-                </Link>
+                <div key={item.label} className="nav-item">
+                  <Link href={item.href} className={`nav-link${active ? " active" : ""}`}>
+                    {item.label}
+                    <Icon name="chevron" size={15} className="ico nav-chev" />
+                  </Link>
+                  <div className="mega" role="menu">
+                    <div
+                      className="mega__inner"
+                      style={{ "--mega-cols": item.columns.length } as CSSProperties}
+                    >
+                      {item.columns.map((col) => (
+                        <div key={col.heading} className="mega__col" role="group" aria-label={col.heading}>
+                          <span className="mega__heading">{col.heading}</span>
+                          {col.links.map((l) => (
+                            <Link key={l.label + l.href} href={l.href} className="mega__link" role="menuitem">
+                              {l.icon && (
+                                <span className="mega__ico"><Icon name={l.icon} size={20} className="ico" /></span>
+                              )}
+                              <span className="mega__txt">
+                                <b>{l.label}</b>
+                                {l.desc && <small>{l.desc}</small>}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </nav>
           <div className="header-tools">
-            <Link href="/documents" className="icon-btn" aria-label="Search">
-              <Icon name="search" size={20} />
-            </Link>
             <button type="button" className="icon-btn" aria-label="Toggle dark mode" onClick={toggleTheme}>
               <Icon name={theme === "dark" ? "sun" : "moon"} size={20} />
             </button>
