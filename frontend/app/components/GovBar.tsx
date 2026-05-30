@@ -9,11 +9,6 @@ export function GovBar() {
             <strong style={{ color: "#fff", fontWeight: 600 }}>Solomon Islands Government</strong>
           </span>
         </div>
-        <nav className="gov-bar__links" aria-label="Utility">
-          <a href="#">Yumi Fastaem</a>
-          <a href="#">Staff Email</a>
-          <a href="#">Tok Pisin</a>
-        </nav>
       </div>
     </div>
   );

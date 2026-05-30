@@ -580,20 +580,16 @@ img { display: block; max-width: 100%; }
 }
 [data-theme="dark"] .gov-bar { background: #050f1c; }
 .gov-bar .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--sp-4); padding-block: 0.5rem; flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: center;
+  gap: var(--sp-4); padding-block: 0.5rem;
 }
-.gov-bar a { color: var(--n-200); }
-.gov-bar a:hover { color: #fff; }
-.gov-bar__id { display: flex; align-items: center; gap: 0.6rem; }
+.gov-bar__id { display: flex; align-items: center; gap: 0.6rem; text-align: center; }
 .gov-bar__id .flag {
   width: 22px; height: 14px; border-radius: 2px; flex: none;
   background:
     linear-gradient(160deg, transparent 47%, var(--gold-300) 47%, var(--gold-300) 56%, transparent 56%),
     linear-gradient(to bottom, var(--blue-500) 50%, var(--green-500) 50%);
 }
-.gov-bar__links { display: flex; gap: var(--sp-5); align-items: center; flex-wrap: wrap; }
-
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 100;
@@ -683,6 +679,8 @@ img { display: block; max-width: 100%; }
 @media (max-width: 1024px) {
   .nav { display: none; }
   .menu-toggle { display: grid; }
+  /* Dark-mode toggle lives inside the drawer on mobile */
+  .theme-toggle { display: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -902,6 +900,18 @@ img { display: block; max-width: 100%; }
   padding: var(--sp-3) 1rem 0.2rem;
 }
 
+/* Drawer dark-mode toggle */
+.drawer__theme {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--sp-4); padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line); border-radius: var(--r-sm);
+  background: var(--surface-sunk); color: var(--ink);
+  font-family: inherit; font-size: var(--t-body); font-weight: 700;
+  cursor: pointer; transition: border-color .15s ease, color .15s ease;
+}
+.drawer__theme:hover { border-color: var(--line-strong); color: var(--primary); }
+.drawer__theme .ico { color: var(--muted); flex: none; }
+
 /* ---------- Page header (inner pages) ---------- */
 .page-head {
   background: var(--bg-tint);
@@ -922,10 +932,28 @@ img { display: block; max-width: 100%; }
   /* Stack hero CTAs full-width for comfortable tap targets */
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { width: 100%; justify-content: center; }
+
+  /* Keep the announcement strip readable: stack text above a full-width action */
+  .alert { flex-wrap: wrap; gap: var(--sp-3); padding: var(--sp-4); }
+  .alert .btn--sm { width: 100%; justify-content: center; align-self: stretch !important; }
 }
 
-/* Collapse the gov utility bar onto its own line on small screens */
-@media (max-width: 560px) {
-  .gov-bar .wrap { flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
-  .gov-bar__links { gap: var(--sp-4); }
+/* ---------- Mobile hero: keep it minimal ---------- */
+@media (max-width: 880px) {
+  /* Trim the lengthy quick-link cards on small screens — search + chips are enough */
+  .hero__quick { display: none; }
+  .hero__panel { padding: var(--sp-4); }
+}
+@media (max-width: 600px) {
+  .hero .wrap { padding-block: var(--sp-7); }
+  .hero h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+  .hero__panel-title { font-size: var(--t-h5, 1.1rem); }
+}
+
+/* ---------- Mobile search: bigger, easier to tap ---------- */
+@media (max-width: 600px) {
+  .search { border-radius: var(--r-md); padding-left: 0.9rem; }
+  /* 16px input prevents iOS auto-zoom on focus */
+  .search input { font-size: 16px; padding-block: 0.95rem; }
+  .search button { margin: 5px; padding-inline: 1rem; }
 }

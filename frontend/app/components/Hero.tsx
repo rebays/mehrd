@@ -20,10 +20,6 @@ export function Hero() {
             <h1>
               Building a <span className="hl">brighter future</span> through learning.
             </h1>
-            <p className="lede">
-              The Ministry of Education &amp; Human Resources Development supports students,
-              teachers and families across the Solomon Islands.
-            </p>
             <div className="hero__actions">
               <Link href="/results" className="btn btn--accent btn--lg">
                 Check exam results <Icon name="arrow" size={18} />

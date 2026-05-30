@@ -8,9 +8,11 @@ type Props = {
   open: boolean;
   onClose: () => void;
   nav: readonly NavItem[];
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
 };
 
-export function MobileDrawer({ open, onClose, nav }: Props) {
+export function MobileDrawer({ open, onClose, nav, theme, onToggleTheme }: Props) {
   return (
     <div
       className={`drawer${open ? " open" : ""}`}
@@ -49,6 +51,11 @@ export function MobileDrawer({ open, onClose, nav }: Props) {
             </div>
           </details>
         ))}
+
+        <button type="button" className="drawer__theme" onClick={onToggleTheme}>
+          <span>{theme === "dark" ? "Light mode" : "Dark mode"}</span>
+          <Icon name={theme === "dark" ? "sun" : "moon"} size={20} className="ico" />
+        </button>
       </div>
     </div>
   );

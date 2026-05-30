@@ -67,7 +67,12 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="header-tools">
-            <button type="button" className="icon-btn" aria-label="Toggle dark mode" onClick={toggleTheme}>
+            <button
+              type="button"
+              className="icon-btn theme-toggle"
+              aria-label="Toggle dark mode"
+              onClick={toggleTheme}
+            >
               <Icon name={theme === "dark" ? "sun" : "moon"} size={20} />
             </button>
             <button
@@ -81,7 +86,13 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} nav={NAV} />
+      <MobileDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        nav={NAV}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
     </>
   );
 }
