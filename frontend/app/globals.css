@@ -87,8 +87,9 @@
   --focus-ring: color-mix(in oklab, var(--primary) 45%, transparent);
 
   /* ---- Typography ---- */
-  --font-sans: var(--font-jakarta), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans:  var(--font-source-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-merriweather), Georgia, "Times New Roman", serif;
+  --font-mono:  var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 
   --t-display:  clamp(2.6rem, 1.6rem + 3.4vw, 4.25rem);
   --t-h1:       clamp(2rem, 1.4rem + 2vw, 3rem);
@@ -213,9 +214,10 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.018em;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
   color: var(--ink);
   text-wrap: balance;
 }

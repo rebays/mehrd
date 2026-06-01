@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Merriweather, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { IconSprite } from "./components/IconSprite";
 import { GovBar } from "./components/GovBar";
@@ -7,10 +7,18 @@ import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
 import { ThemeInit } from "./components/ThemeInit";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+// Headings — Merriweather (serif)
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700", "900"],
+});
+
+// Body / normal text — Source Sans Pro (a.k.a. Source Sans 3)
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -31,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" data-accent="blue" className={`${jakarta.variable} ${plexMono.variable}`}>
+    <html lang="en" data-theme="light" data-accent="blue" className={`${merriweather.variable} ${sourceSans.variable} ${plexMono.variable}`}>
       <head>
         <ThemeInit />
       </head>
