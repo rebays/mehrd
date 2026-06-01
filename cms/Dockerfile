@@ -46,4 +46,4 @@ USER wagtail
 CMD set -xe; \
     python manage.py collectstatic --noinput --clear; \
     python manage.py migrate --noinput; \
-    gunicorn core.wsgi:application
+    gunicorn core.wsgi:application --bind 0.0.0.0:$PORT --workers 2
