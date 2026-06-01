@@ -1,4 +1,6 @@
 anyascii==0.3.3
+boto3==1.38.23
+django-storages[s3]==1.14.6
 dj-database-url==2.3.0
 psycopg[binary]==3.2.13
 python-dotenv==1.1.0
