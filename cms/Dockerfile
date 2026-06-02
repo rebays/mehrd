@@ -45,4 +45,5 @@ USER wagtail
 # collectstatic runs at startup (not build time) so R2 credentials are available
 CMD python manage.py collectstatic --noinput --clear; \
     python manage.py migrate --noinput && \
+    python manage.py configure_site && \
     gunicorn core.wsgi:application --bind 0.0.0.0:$PORT --workers 2
