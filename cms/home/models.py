@@ -1,14 +1,8 @@
 from django.db import models
-from grapple.models import (
-    GraphQLField,
-    GraphQLImage,
-    GraphQLRichText,
-    GraphQLStreamfield,
-    GraphQLString,
-)
+from grapple.models import GraphQLStreamfield, GraphQLString
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import RichTextField, StreamField
 from wagtail.blocks import CharBlock, RichTextBlock
+from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Page
 
