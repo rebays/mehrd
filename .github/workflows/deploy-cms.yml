@@ -40,4 +40,5 @@ jobs:
           secrets: |
             SECRET_KEY=django-secret-key:latest
             DATABASE_URL=database-url:latest
+          env_vars: ALLOWED_HOSTS=cms-y6t3tnh4zq-ts.a.run.app
           flags: --port 8000 --min-instances 0 --max-instances 2 --allow-unauthenticated
