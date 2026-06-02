@@ -1,4 +1,6 @@
 anyascii==0.3.3
+wagtail-grapple==0.25.0
+graphene-django==3.2.2
 whitenoise==6.9.0
 boto3==1.38.23
 django-storages[s3]==1.14.6

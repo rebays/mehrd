@@ -32,6 +32,8 @@ load_dotenv(BASE_DIR / ".env")
 INSTALLED_APPS = [
     "home",
     "search",
+    "grapple",
+    "graphene_django",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -169,6 +171,13 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "core"
+
+# Grapple
+GRAPPLE = {
+    "APPS": ["home"],
+    "RICH_TEXT_FORMAT": "html",
+    "EXPOSE_GRAPHIQL": True,
+}
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
