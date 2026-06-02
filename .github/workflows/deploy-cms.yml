@@ -37,3 +37,7 @@ jobs:
           service: cms
           region: ${{ env.REGION }}
           image: ${{ env.IMAGE }}:${{ github.sha }}
+          secrets: |
+            SECRET_KEY=django-secret-key:latest
+            DATABASE_URL=database-url:latest
+          flags: --port 8000 --min-instances 0 --max-instances 2 --allow-unauthenticated
