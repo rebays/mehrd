@@ -13,7 +13,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
-RUN pip install "gunicorn==25.1.0"
 
 
 FROM python:3.12-slim-bookworm AS runtime
