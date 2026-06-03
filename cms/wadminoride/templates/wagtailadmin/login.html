@@ -1,5 +1,4 @@
 {% extends "wagtailadmin/login.html" %}
-{% load i18n %}
 {% load static %}
 
 {% block branding_login %}Sign in to SINPF CMS{% endblock %}
@@ -7,76 +6,6 @@
 {% block extra_css %}
 {{ block.super }}
 <style>
-    .social-login-container {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-
-    .social-login-divider {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        margin: 1rem 0;
-        color: #6b7280;
-        font-size: 0.875rem;
-        font-weight: 500;
-    }
-
-    .social-login-divider::before,
-    .social-login-divider::after {
-        content: '';
-        flex: 1;
-        border-bottom: 1px solid #e5e7eb;
-    }
-
-    .social-login-divider:not(:empty)::before {
-        margin-right: 1rem;
-    }
-
-    .social-login-divider:not(:empty)::after {
-        margin-left: 1rem;
-    }
-
-    .microsoft-login-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #ffffff;
-        color: #374151;
-        border: 1px solid #d1d5db;
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .microsoft-login-button:hover {
-        background: #f9fafb;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        border-color: #00a4ef;
-        transform: translateY(-1px);
-    }
-
-    .microsoft-login-button:active {
-        transform: translateY(0);
-    }
-
-    .microsoft-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 12px;
-    }
-
-    /* Adjust footer button layout */
     .form-actions {
         display: flex;
         flex-wrap: wrap;
@@ -129,23 +58,6 @@
 {% block submit_buttons %}
 <div class="submit-buttons-container">
     {{ block.super }}
-</div>
-
-<div class="social-login-container">
-    <div class="social-login-divider">
-        {% trans "OR" %}
-    </div>
-
-    <a href="{% url 'social:begin' 'azuread-oauth2' %}" class="microsoft-login-button">
-        <svg class="microsoft-icon" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
-            <title>MS-SymbolLockup</title>
-            <rect x="1" y="1" width="9" height="9" fill="#f25022" />
-            <rect x="11" y="1" width="9" height="9" fill="#7fbb00" />
-            <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
-            <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
-        </svg>
-        <span>{% trans "Continue with Microsoft" %}</span>
-    </a>
 </div>
 {% endblock %}
 
