@@ -46,6 +46,18 @@ if _R2_ACCOUNT_ID and _R2_BUCKET and _R2_KEY_ID and _R2_SECRET:
     }
     MEDIA_URL = f"{_R2_PUBLIC_URL}/media/"
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "loggers": {
+        "django": {"handlers": ["console"], "level": "ERROR", "propagate": False},
+        "wagtail": {"handlers": ["console"], "level": "ERROR", "propagate": False},
+    },
+}
+
 try:
     from .local import *
 except ImportError:
