@@ -172,7 +172,10 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 WAGTAIL_SITE_NAME = "core"
 
-# Grapple
+# Grapple / GraphQL
+GRAPHENE = {
+    "SCHEMA": "grapple.schema.schema",
+}
 GRAPPLE = {
     "APPS": ["home"],
     "RICH_TEXT_FORMAT": "html",
