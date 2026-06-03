@@ -32,6 +32,7 @@ load_dotenv(BASE_DIR / ".env")
 INSTALLED_APPS = [
     "home",
     "search",
+    "wadminoride",
     "grapple",
     "graphene_django",
     "wagtail.contrib.forms",
