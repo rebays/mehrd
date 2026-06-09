@@ -32,6 +32,7 @@ load_dotenv(BASE_DIR / ".env")
 INSTALLED_APPS = [
     "home",
     "search",
+    "menu",
     "wadminoride",
     "grapple",
     "graphene_django",
@@ -178,7 +179,7 @@ GRAPHENE = {
     "SCHEMA": "grapple.schema.schema",
 }
 GRAPPLE = {
-    "APPS": ["home"],
+    "APPS": ["home", "menu"],
     "RICH_TEXT_FORMAT": "html",
     "EXPOSE_GRAPHIQL": True,
 }
