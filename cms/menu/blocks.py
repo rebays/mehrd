@@ -1,6 +1,7 @@
 from wagtail import blocks
 from grapple.helpers import register_streamfield_block
 from grapple.models import (
+    GraphQLBoolean,
     GraphQLPage,
     GraphQLStreamfield,
     GraphQLString,
@@ -48,7 +49,6 @@ class MenuExternalLinkBlock(blocks.StructBlock):
         graphql_name = "MenuExternalLinkBlock"
 
 @register_streamfield_block
-@register_streamfield_block
 class LinksGroupBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     links = blocks.StreamBlock([
@@ -69,6 +69,7 @@ class LinksGroupBlock(blocks.StructBlock):
 class DropdownBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     page = blocks.PageChooserBlock(required=False, help_text="Optional — makes the dropdown title a clickable link.")
+    show_dropdown_icon = blocks.BooleanBlock(required=False, help_text="Display a dropdown indicator icon.")
     items = blocks.StreamBlock([
         ('page_link', MenuPageLinkBlock()),
         ('external_link', MenuExternalLinkBlock()),
@@ -78,6 +79,7 @@ class DropdownBlock(blocks.StructBlock):
     graphql_fields = [
         GraphQLString("title"),
         GraphQLPage("page"),
+        GraphQLBoolean("show_dropdown_icon"),
         GraphQLStreamfield("items"),
     ]
 

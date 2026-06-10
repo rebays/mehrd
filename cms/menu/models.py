@@ -2,12 +2,10 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from grapple.models import GraphQLString, GraphQLStreamfield
-from wagtail.snippets.models import register_snippet
 from grapple.helpers import register_query_field
 import graphene
 from .blocks import MenuItemBlock
 
-@register_snippet
 @register_query_field("menu", "menus", query_params={"slug": graphene.String()})
 class Menu(models.Model):
     name = models.CharField(max_length=100,help_text="Menu Name (e.g., 'main nav' or 'sidebar nav').")
