@@ -9,7 +9,7 @@ import { GET_MENU } from "@/lib/queries/menu";
 import type { MenuResponse, DropdownBlock } from "@/lib/types/menu";
 
 export async function SiteHeader() {
-  const data = await graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" });
+  const data = await graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" }, { cache: "force-cache" });
 
   const dropdowns = data.menu.menuItems.filter(
     (item): item is DropdownBlock => item.blockType === "DropdownBlock"

@@ -7,8 +7,8 @@ import type { MenuResponse, LinksGroupBlock, PageLinkBlock, ExternalLinkBlock } 
 
 export async function SiteFooter() {
   const [footerTopNav, footerBottomNav] = await Promise.all([
-    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-top-nav" }),
-    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-bottom-nav" }),
+    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-top-nav" }, { cache: "force-cache" }),
+    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-bottom-nav" }, { cache: "force-cache" }),
   ]);
 
   const topGroups = footerTopNav.menu.menuItems.filter(

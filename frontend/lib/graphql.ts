@@ -45,6 +45,6 @@ export async function graphqlFetch<T>(
       );
     }
 
-    throw new Error("An unexpected error occurred");
+    throw error instanceof Error ? error : new Error(String(error));
   }
 }
