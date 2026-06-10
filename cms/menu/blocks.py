@@ -9,7 +9,7 @@ from grapple.models import (
 
 
 @register_streamfield_block
-class MenuPageLinkBlock(blocks.StructBlock):
+class PageLinkBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     page = blocks.PageChooserBlock()
 
@@ -19,10 +19,10 @@ class MenuPageLinkBlock(blocks.StructBlock):
     ]
 
     class Meta:
-        graphql_name = "MenuPageLinkBlock"
+        graphql_name = "PageLinkBlock"
 
 @register_streamfield_block
-class MenuExternalLinkBlock(blocks.StructBlock):
+class ExternalLinkBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     url = blocks.URLBlock()
 
@@ -32,14 +32,14 @@ class MenuExternalLinkBlock(blocks.StructBlock):
     ]
 
     class Meta:
-        graphql_name = "MenuExternalLinkBlock"
+        graphql_name = "ExternalLinkBlock"
 
 @register_streamfield_block
 class LinksGroupBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     links = blocks.StreamBlock([
-        ('page_link', MenuPageLinkBlock()),
-        ('external_link', MenuExternalLinkBlock()),
+        ('page_link', PageLinkBlock()),
+        ('external_link', ExternalLinkBlock()),
     ])
 
     graphql_fields = [
@@ -57,8 +57,8 @@ class DropdownBlock(blocks.StructBlock):
     page = blocks.PageChooserBlock(required=False, help_text="Optional — makes the dropdown title a clickable link.")
     show_dropdown_icon = blocks.BooleanBlock(required=False, help_text="Display a dropdown indicator icon.")
     items = blocks.StreamBlock([
-        ('page_link', MenuPageLinkBlock()),
-        ('external_link', MenuExternalLinkBlock()),
+        ('page_link', PageLinkBlock()),
+        ('external_link', ExternalLinkBlock()),
         ('links_group', LinksGroupBlock()),
     ])
 
@@ -74,8 +74,8 @@ class DropdownBlock(blocks.StructBlock):
 
 
 class MenuItemBlock(blocks.StreamBlock):
-    page_link = MenuPageLinkBlock()
-    external_link = MenuExternalLinkBlock()
+    page_link = PageLinkBlock()
+    external_link = ExternalLinkBlock()
     links_group = LinksGroupBlock()
     dropdown = DropdownBlock()
 
