@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PageHeader } from "../components/PageHeader";
-import { SectionHead } from "../components/SectionHead";
-import { DocList, type DocItem } from "../components/DocList";
-import { SearchForm } from "../components/SearchForm";
+import { PageHeader } from "@/components/PageHeader";
+import { SectionHead } from "@/components/SectionHead";
+import { DocList, type DocItem } from "@/components/DocList";
+import { SearchForm } from "@/components/SearchForm";
 
 export const metadata: Metadata = {
   title: "Documents & Reports — MEHRD",

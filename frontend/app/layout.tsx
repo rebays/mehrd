@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Merriweather, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { IconSprite } from "./components/IconSprite";
-import { GovBar } from "./components/GovBar";
-import { SiteHeader } from "./components/SiteHeader";
-import { SiteFooter } from "./components/SiteFooter";
-import { ThemeInit } from "./components/ThemeInit";
+import { IconSprite } from "@/components/IconSprite";
+import { GovBar } from "@/components/GovBar";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { ThemeInit } from "@/components/ThemeInit";
 
 // Headings — Merriweather (serif)
 const merriweather = Merriweather({
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" data-accent="blue" className={`${merriweather.variable} ${sourceSans.variable} ${plexMono.variable}`}>
+    <html lang="en" data-theme="light" data-accent="blue" className={`${merriweather.variable} ${sourceSans.variable} ${plexMono.variable}`} suppressHydrationWarning>
       <head>
         <ThemeInit />
       </head>

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHeader } from "../components/PageHeader";
-import { SectionHead } from "../components/SectionHead";
-import { TaskCard } from "../components/TaskCard";
-import { DocList, type DocItem } from "../components/DocList";
-import { Alert } from "../components/Alert";
-import { CTA } from "../components/CTA";
-import { Eyebrow } from "../components/Eyebrow";
-import { Icon } from "../components/Icon";
+import { PageHeader } from "@/components/PageHeader";
+import { SectionHead } from "@/components/SectionHead";
+import { TaskCard } from "@/components/TaskCard";
+import { DocList, type DocItem } from "@/components/DocList";
+import { Alert } from "@/components/Alert";
+import { CTA } from "@/components/CTA";
+import { Eyebrow } from "@/components/Eyebrow";
+import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "Scholarships — MEHRD",
