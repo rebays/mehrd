@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHeader } from "../components/PageHeader";
-import { SectionHead } from "../components/SectionHead";
-import { StatBand } from "../components/StatBand";
-import { DivisionGroup } from "../components/DivisionGroup";
-import { Eyebrow } from "../components/Eyebrow";
-import { CTA } from "../components/CTA";
-import { Icon, type IconName } from "../components/Icon";
+import { PageHeader } from "@/components/PageHeader";
+import { SectionHead } from "@/components/SectionHead";
+import { StatBand } from "@/components/StatBand";
+import { DivisionGroup } from "@/components/DivisionGroup";
+import { Eyebrow } from "@/components/Eyebrow";
+import { CTA } from "@/components/CTA";
+import { Icon, type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
   title: "About the Ministry — MEHRD",

@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { Hero } from "./components/Hero";
-import { Alert } from "./components/Alert";
-import { TaskCard } from "./components/TaskCard";
-import { SectionHead } from "./components/SectionHead";
-import { StatBand } from "./components/StatBand";
-import { NewsCard } from "./components/NewsCard";
-import { DocList, type DocItem } from "./components/DocList";
-import { DivisionGroup } from "./components/DivisionGroup";
-import { CTA } from "./components/CTA";
+import { Hero } from "@/components/Hero";
+import { Alert } from "@/components/Alert";
+import { TaskCard } from "@/components/TaskCard";
+import { SectionHead } from "@/components/SectionHead";
+import { StatBand } from "@/components/StatBand";
+import { NewsCard } from "@/components/NewsCard";
+import { DocList, type DocItem } from "@/components/DocList";
+import { DivisionGroup } from "@/components/DivisionGroup";
+import { CTA } from "@/components/CTA";
 
 const TASKS = [
   { href: "/results",       icon: "check" as const,     title: "Exam Results & Placements", body: "Year 7, 10 & 13 national examination results and official placement lists.", cta: "Check now",            variant: "default" as const },
