@@ -7,20 +7,6 @@ from grapple.models import (
     GraphQLString,
 )
 
-@register_streamfield_block
-class SubLinkBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
-    link_page = blocks.PageChooserBlock(required=False)
-    link_url = blocks.URLBlock(required=False)
-
-    graphql_fields = [
-        GraphQLString("title"),
-        GraphQLPage("link_page"),
-        GraphQLString("link_url"),
-    ]
-
-    class Meta:
-        graphql_name = "SubLinkBlock"
 
 @register_streamfield_block
 class MenuLinkBlock(blocks.StructBlock):
