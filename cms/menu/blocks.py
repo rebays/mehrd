@@ -9,7 +9,7 @@ from grapple.models import (
 
 
 @register_streamfield_block
-class MenuLinkBlock(blocks.StructBlock):
+class MenuPageLinkBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     page = blocks.PageChooserBlock()
 
@@ -19,7 +19,7 @@ class MenuLinkBlock(blocks.StructBlock):
     ]
 
     class Meta:
-        graphql_name = "MenuLinkBlock"
+        graphql_name = "MenuPageLinkBlock"
 
 @register_streamfield_block
 class MenuExternalLinkBlock(blocks.StructBlock):
@@ -38,7 +38,7 @@ class MenuExternalLinkBlock(blocks.StructBlock):
 class LinksGroupBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     links = blocks.StreamBlock([
-        ('page_link', MenuLinkBlock()),
+        ('page_link', MenuPageLinkBlock()),
         ('external_link', MenuExternalLinkBlock()),
     ])
 
@@ -57,7 +57,7 @@ class DropdownBlock(blocks.StructBlock):
     page = blocks.PageChooserBlock(required=False, help_text="Optional — makes the dropdown title a clickable link.")
     show_dropdown_icon = blocks.BooleanBlock(required=False, help_text="Display a dropdown indicator icon.")
     items = blocks.StreamBlock([
-        ('page_link', MenuLinkBlock()),
+        ('page_link', MenuPageLinkBlock()),
         ('external_link', MenuExternalLinkBlock()),
         ('links_group', LinksGroupBlock()),
     ])
@@ -74,7 +74,7 @@ class DropdownBlock(blocks.StructBlock):
 
 
 class MenuItemBlock(blocks.StreamBlock):
-    page_link = MenuLinkBlock()
+    page_link = MenuPageLinkBlock()
     external_link = MenuExternalLinkBlock()
     links_group = LinksGroupBlock()
     dropdown = DropdownBlock()
