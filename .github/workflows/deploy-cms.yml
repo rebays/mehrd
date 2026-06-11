@@ -40,5 +40,6 @@ jobs:
           secrets: |
             SECRET_KEY=django-secret-key:latest
             DATABASE_URL=database-url:latest
-          env_vars: ^;^ALLOWED_HOSTS=cms-y6t3tnh4zq-ts.a.run.app cms.mehrd.exceed.com.sb cms-1011026295629.australia-southeast1.run.app;WAGTAIL_SITE_HOSTNAME=cms-y6t3tnh4zq-ts.a.run.app;WAGTAIL_SITE_PORT=443
+            REVALIDATE_SECRET=revalidate-secret:latest
+          env_vars: ^;^ALLOWED_HOSTS=cms-y6t3tnh4zq-ts.a.run.app cms.mehrd.exceed.com.sb cms-1011026295629.australia-southeast1.run.app;WAGTAIL_SITE_HOSTNAME=cms-y6t3tnh4zq-ts.a.run.app;WAGTAIL_SITE_PORT=443;FRONTEND_URL=${{ secrets.FRONTEND_URL }}
           flags: --port 8000 --min-instances 0 --max-instances 2 --allow-unauthenticated

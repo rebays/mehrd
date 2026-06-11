@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
 import { Brand } from "./Brand";
 import { HeaderControls } from "./HeaderControls";
@@ -7,9 +8,16 @@ import { NAV } from "./navConfig";
 import { graphqlFetch } from "@/lib/graphql";
 import { GET_MENU } from "@/lib/queries/menu";
 import type { MenuResponse, DropdownBlock } from "@/lib/types/menu";
+import { cacheTag } from "next/cache";
+
+async function getMenu() {
+  "use cache";
+  cacheTag("main-nav");
+  return graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" });
+}
 
 export async function SiteHeader() {
-  const data = await graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" }, { cache: "force-cache" });
+  const data = await getMenu();
 
   const dropdowns = data.menu.menuItems.filter(
     (item): item is DropdownBlock => item.blockType === "DropdownBlock"
@@ -22,11 +30,13 @@ export async function SiteHeader() {
         <nav className="nav" aria-label="Primary">
           {dropdowns.map((dropdown) => (
             <div key={dropdown.id} className="nav-item">
-              <NavActiveLink
-                href={dropdown.page?.url ?? "#"}
-                label={dropdown.title}
-                showIcon={dropdown.showDropdownIcon}
-              />
+              <Suspense fallback={<Link href={dropdown.page?.url ?? "#"} className="nav-link">{dropdown.title}</Link>}>
+                <NavActiveLink
+                  href={dropdown.page?.url ?? "#"}
+                  label={dropdown.title}
+                  showIcon={dropdown.showDropdownIcon}
+                />
+              </Suspense>
               <div className="mega" role="menu">
                 <div
                   className="mega__inner"

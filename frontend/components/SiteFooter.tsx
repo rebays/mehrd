@@ -4,12 +4,19 @@ import { Icon } from "./Icon";
 import { graphqlFetch } from "@/lib/graphql";
 import { GET_MENU } from "@/lib/queries/menu";
 import type { MenuResponse, LinksGroupBlock, PageLinkBlock, ExternalLinkBlock } from "@/lib/types/menu";
+import { cacheTag } from "next/cache";
+
+async function getFooterMenus() {
+  "use cache";
+  cacheTag("footer-top-nav", "footer-bottom-nav");
+  return Promise.all([
+    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-top-nav" }),
+    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-bottom-nav" }),
+  ]);
+}
 
 export async function SiteFooter() {
-  const [footerTopNav, footerBottomNav] = await Promise.all([
-    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-top-nav" }, { cache: "force-cache" }),
-    graphqlFetch<MenuResponse>(GET_MENU, { slug: "footer-bottom-nav" }, { cache: "force-cache" }),
-  ]);
+  const [footerTopNav, footerBottomNav] = await getFooterMenus();
 
   const topGroups = footerTopNav.menu.menuItems.filter(
     (item): item is LinksGroupBlock => item.blockType === "LinksGroupBlock"
