@@ -8,8 +8,8 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("main-nav");
-  revalidateTag("footer-top-nav");
-  revalidateTag("footer-bottom-nav");
+  revalidateTag("main-nav", "max");
+  revalidateTag("footer-top-nav", "max");
+  revalidateTag("footer-bottom-nav", "max");
   return Response.json({ revalidated: true });
 }
