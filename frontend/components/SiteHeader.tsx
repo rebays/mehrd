@@ -7,9 +7,16 @@ import { NAV } from "./navConfig";
 import { graphqlFetch } from "@/lib/graphql";
 import { GET_MENU } from "@/lib/queries/menu";
 import type { MenuResponse, DropdownBlock } from "@/lib/types/menu";
+import { cacheTag } from "next/cache";
+
+async function getMenu() {
+  "use cache";
+  cacheTag("main-nav");
+  return graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" });
+}
 
 export async function SiteHeader() {
-  const data = await graphqlFetch<MenuResponse>(GET_MENU, { slug: "main-nav" }, { cache: "force-cache" });
+  const data = await getMenu();
 
   const dropdowns = data.menu.menuItems.filter(
     (item): item is DropdownBlock => item.blockType === "DropdownBlock"
