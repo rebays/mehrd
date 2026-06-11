@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
 import { Brand } from "./Brand";
 import { HeaderControls } from "./HeaderControls";
@@ -29,11 +30,13 @@ export async function SiteHeader() {
         <nav className="nav" aria-label="Primary">
           {dropdowns.map((dropdown) => (
             <div key={dropdown.id} className="nav-item">
-              <NavActiveLink
-                href={dropdown.page?.url ?? "#"}
-                label={dropdown.title}
-                showIcon={dropdown.showDropdownIcon}
-              />
+              <Suspense fallback={<Link href={dropdown.page?.url ?? "#"} className="nav-link">{dropdown.title}</Link>}>
+                <NavActiveLink
+                  href={dropdown.page?.url ?? "#"}
+                  label={dropdown.title}
+                  showIcon={dropdown.showDropdownIcon}
+                />
+              </Suspense>
               <div className="mega" role="menu">
                 <div
                   className="mega__inner"
